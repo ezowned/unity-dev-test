@@ -62,7 +62,7 @@ public class BallController : MonoBehaviour
                 _lineRenderer.positionCount = i1 + 1;
                 _lineRenderer.SetPosition(i1, transform.position);
 
-                t += Time.deltaTime * speed / _trajectoryLength * _positions.Length;
+                t += Time.deltaTime * speed * 5 / _trajectoryLength * _positions.Length;
                 yield return new WaitForEndOfFrame();
             }
         }

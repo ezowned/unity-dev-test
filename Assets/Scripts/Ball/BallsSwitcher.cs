@@ -29,12 +29,12 @@ public class BallsSwitcher : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            SetBall((balls.Length + currentBallIndex - 1) % balls.Length);
+            PrevBall();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            SetBall((currentBallIndex + 1) % balls.Length);
+            NextBall();
         }
         ballSpeedSlider.value = balls[currentBallIndex].speed;
 
@@ -47,6 +47,16 @@ public class BallsSwitcher : MonoBehaviour
         currentBallIndex = index;
         ballSpeedSlider.value = balls[index].speed;
         cameraController.target = balls[index].transform;
+    }
+
+    public void NextBall()
+    {
+        SetBall((currentBallIndex + 1) % balls.Length);
+    }
+
+    public void PrevBall()
+    {
+        SetBall((balls.Length + currentBallIndex - 1) % balls.Length);
     }
 
     public void OnUpdateSliderValue()
